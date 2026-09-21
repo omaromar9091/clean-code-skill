@@ -1,67 +1,60 @@
 # clean-code-skill
 
-[English](README.md) | **العربية**
+[English](README.md) | العربية
 
-مهارة (Skill) للـ AI Agent بتخليه يراجع الكود ويعمله Refactor على أساس **11 قاعدة Clean Code**، بخطوات آمنة ومتدرجة و**من غير ما يغيّر سلوك الكود**.
+Skill لـ OpenCode و Claude Code بتراجع الكود وتعمله Refactor على أساس 11 قاعدة Clean Code. بتشتغل بخطوات صغيرة، وسلوك الكود بيفضل زي ما هو.
 
-بتشتغل مع [OpenCode](https://opencode.ai) و Claude Code، ومع أي Agent بيقرأ صيغة `SKILL.md`.
+## بتعمل إيه
 
-## ليه الـ Skill دي؟
+وجّه الـ Agent لملف أو فولدر. بيقرأ الكود، ويكتب تقرير بالمشاكل اللي لقاها مرتبة حسب الخطورة، ولو طلبت منه ينفّذ، بيطبّق الحلول قاعدة قاعدة، وبيشغّل التيستات أو التطبيق بعد كل خطوة.
 
-لو ادّيت الـ Agent قائمة قواعد بس، هيطلع تعديلات عامة وغير متسقة. الـ Skill دي بتديله:
-
-- **Workflow واضح:** تحديد النطاق، قياس الوضع الحالي، فحص، تقرير، تنفيذ بترتيب آمن، تحقق، ملخص.
-- **وضعين:** مراجعة فقط (تقرير)، أو Refactor (تنفيذ التعديلات).
-- **حدود أمان:** مش هيغيّر أسماء الـ routes أو أعمدة الداتابيز أو الـ APIs العامة، ومش هيلمس نصوص الواجهة أو الترجمات، ومش هيضيف مكتبات من غير ما يسألك.
-- **وعي بتغيّر السلوك:** أي تعديل بيغيّر السلوك (زي إضافة معالجة أخطاء) بيتكتب في قسم منفصل عشان توافق عليه.
-- **أنماط عملية:** لكل قاعدة: العَرَض (Smell)، والحل، ومثال قبل/بعد، مع مثال Flask كامل.
-- **أمانة:** لو الكود نضيف فعلاً، هيقولك كده بدل ما يخترع ملاحظات.
+فيه وضعين: مراجعة بس (تقرير من غير تعديل)، أو Refactor (بيعدّل). في الحالتين بيسيب في حاله الحاجات اللي كود تاني معتمد عليها: روابط الـ routes وأعمدة الداتابيز والـ APIs العامة ونصوص الواجهة والترجمات. ومبيضيفش مكتبات من غير ما يسألك. أي تعديل بيغيّر السلوك، زي إضافة معالجة أخطاء جديدة، بيتكتب في قسم لوحده عشان توافق عليه الأول.
 
 ## القواعد الـ 11
 
 | # | القاعدة | باختصار |
 |---|---------|---------|
-| 1 | Naming (التسمية) | أسماء واضحة ومباشرة بتقول الحاجة دي إيه أو بتعمل إيه |
-| 2 | Comment (التعليقات) | اشرح **ليه**، مش اللي الكود بيقوله أصلاً |
-| 3 | Consistency (الاتساق) | أسلوب واحد ثابت في المشروع كله |
+| 1 | Naming (التسمية) | الاسم يقول الحاجة دي إيه أو بتعمل إيه |
+| 2 | Comment (التعليقات) | اشرح ليه، مش اللي الكود بيقوله أصلاً |
+| 3 | Consistency (الاتساق) | أسلوب واحد في المشروع كله |
 | 4 | Early Return (الخروج المبكر) | اخرج بدري بدل الشروط المتداخلة |
-| 5 | Function (الدوال) | كل دالة مسؤولة عن مهمة واحدة |
-| 6 | Single Responsibility (المسؤولية الواحدة) | كل جزء في الكود له مسؤولية واحدة واضحة |
+| 5 | Function (الدوال) | كل دالة تعمل مهمة واحدة |
+| 6 | Single Responsibility (المسؤولية الواحدة) | كل موديول أو كلاس له سبب واحد للتغيير |
 | 7 | Abstraction (التجريد) | خبّي التفاصيل المشوشة من غير مبالغة |
 | 8 | Separation of Concerns (فصل المسؤوليات) | افصل الواجهة عن الـ API عن الـ Business Logic |
 | 9 | DRY (عدم تكرار الكود) | الكود المكرر يتجمع في مكان واحد |
-| 10 | Don't Repeat Logic (عدم تكرار المنطق) | كل قاعدة عمل (Business Rule) تتكتب في مكان واحد |
-| 11 | Error Handling (التعامل مع الأخطاء) | متفترضش إن كل حاجة هتنجح، وعالج الفشل صراحةً |
+| 10 | Don't Repeat Logic (عدم تكرار المنطق) | كل قاعدة عمل تتكتب في مكان واحد |
+| 11 | Error Handling (التعامل مع الأخطاء) | عالج الفشل صراحةً بدل ما تفترض إن كل حاجة هتنجح |
 
-القواعد متقسمة على أربع مجموعات (قراءة الكود، البنية، التكرار، معالجة الأخطاء) عشان الـ Agent يحمّل الإرشادات اللي محتاجها بس.
+القواعد متقسمة على أربع مجموعات: قراءة الكود، والبنية، والتكرار، ومعالجة الأخطاء. الـ Agent بيقرأ تفاصيل المجموعة بس لما يلاقي فيها مشكلة.
 
 ## التثبيت
 
-الـ Skill هي فولدر `clean-code/`. انسخه لمكان الـ skills بتاع الـ Agent.
+الـ Skill هي فولدر `clean-code/`. انسخه في فولدر الـ skills بتاع الـ Agent. نفّذ الأوامر من فولدر مفيهوش فولدر اسمه `clean-code-skill` بالفعل.
 
-**OpenCode، عام (لكل المشاريع)**
+OpenCode لكل المشاريع (Linux و macOS):
+
 ```bash
 git clone https://github.com/omaromar9091/clean-code-skill.git
 mkdir -p ~/.config/opencode/skills
 cp -r clean-code-skill/clean-code ~/.config/opencode/skills/
 ```
 
-**ويندوز (PowerShell)**
+OpenCode على ويندوز (PowerShell):
+
 ```powershell
 git clone https://github.com/omaromar9091/clean-code-skill.git
 New-Item -ItemType Directory -Force "$HOME\.config\opencode\skills"
 Copy-Item -Recurse clean-code-skill\clean-code "$HOME\.config\opencode\skills\"
 ```
 
-**لمشروع واحد:** انسخ `clean-code/` جوه `.opencode/skills/` في المشروع.
+لمشروع واحد، انسخ `clean-code/` جوه `.opencode/skills/` في المشروع. لـ Claude Code، انسخه في `~/.claude/skills/` (لكل المشاريع) أو `.claude/skills/` (لمشروع واحد).
 
-**Claude Code:** انسخه في `~/.claude/skills/` (عام) أو `.claude/skills/` (للمشروع).
-
-أعد تشغيل الـ Agent بعد التثبيت.
+أعد تشغيل الـ Agent بعد النسخ.
 
 ## الاستخدام
 
-أضمن طريقة إنك تذكر اسم الـ Skill صراحةً:
+أضمن طريقة إنك تذكر اسم الـ Skill في الطلب:
 
 ```
 Use the clean-code skill to review src/ (report only)
@@ -69,44 +62,38 @@ Use the clean-code skill to refactor routes.py
 Apply only Early Return and Naming from the clean-code skill on services/
 ```
 
-وبتتفعّل لوحدها كمان لما تطلب تنضيف أو Refactor أو مراجعة أو تحسين جودة الكود.
-
-وبتشتغل بالعربي:
+وبتشتغل لوحدها كمان لما تطلب تنضيف أو Refactor أو مراجعة للكود. والطلبات بالعربي شغالة:
 
 ```
 راجع الكود ده بـ clean-code skill وطلعلي تقرير بس
 نضّف ملف routes.py وطبّق Early Return وفصل المسؤوليات
 ```
 
-## الهيكل
+اعمل commit لشغلك قبل ما تبدأ، عشان تقدر ترجع عن أي خطوة. المشاريع اللي فيها تيستات بتطلع نتايج أحسن، لأن الـ Agent بيشغّلها بعد كل تعديل.
+
+## هيكل الـ repo
 
 ```
 clean-code-skill/
-├── README.md / README.ar.md
+├── README.md
+├── README.ar.md
 ├── LICENSE
-├── clean-code/                  <- الـ Skill (انسخ الفولدر ده)
-│   ├── SKILL.md                 الـ workflow وجدول القواعد وحدود الأمان وشكل التقرير
+├── clean-code/                  الـ Skill؛ انسخ الفولدر ده
+│   ├── SKILL.md                 الـ workflow وجدول القواعد والحدود وشكل التقرير
 │   └── references/
 │       ├── readability.md       Naming, Comment, Consistency, Early Return
 │       ├── structure.md         Function, Single Responsibility, Abstraction, Separation of Concerns
 │       ├── duplication.md       DRY, Don't Repeat Logic
 │       └── error-handling.md    Error Handling
 └── examples/
-    └── flask-refactor.md        مثال قبل/بعد كامل
+    └── flask-refactor.md        مثال كامل قبل وبعد
 ```
 
-ملف `SKILL.md` قصير ويتحمّل كل ما الـ Skill تتفعّل. ملفات `references/` بتتقرأ وقت الحاجة بس، وده بيحافظ على حجم الـ context صغير.
+ملف `SKILL.md` بيتحمّل كل ما الـ Skill تشتغل. ملفات `references/` بتتقرأ وقت الحاجة بس، وده بيخلي الـ context صغير.
 
-## نصايح
+## ملاحظات وتواصل
 
-- جرّبها على مشروع صغير الأول، وبعدين على مشروع أكبر.
-- المشاريع اللي فيها Tests بتديك أحسن نتيجة، لأن الـ Agent بيتحقق بعد كل خطوة.
-- اعمل commit قبل ما تبدأ، عشان تقدر ترجع عن أي خطوة.
-- قول للـ Agent أنهي قواعد أهم عندك، أو أنهي فولدرات يتجاهلها.
-
-## المساهمة
-
-الـ Issues والـ Pull Requests مرحّب بيها: أمثلة قبل/بعد للغات وفريمورك تانية (JavaScript/TypeScript، C#، Java، Go...)، تحسين اكتشاف المشاكل، والترجمات.
+لو لقيت مشكلة أو عندك اقتراح، افتح Issue: https://github.com/omaromar9091/clean-code-skill/issues
 
 ## الرخصة
 
