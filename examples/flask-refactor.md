@@ -1,6 +1,6 @@
 # Example: Refactoring a Flask route
 
-A generic checkout route that mixes everything in one function. The example uses a made-up shop; nothing here comes from a real project.
+A checkout route that mixes everything in one function, and the same route after refactoring.
 
 Rules applied: Naming, Early Return, Function, Single Responsibility, Separation of Concerns, Error Handling (flagged as a behavior change).
 
