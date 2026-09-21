@@ -41,14 +41,14 @@
 
 **OpenCode، عام (لكل المشاريع)**
 ```bash
-git clone https://github.com/<your-username>/clean-code-skill.git
+git clone https://github.com/omaromar9091/clean-code-skill.git
 mkdir -p ~/.config/opencode/skills
 cp -r clean-code-skill/clean-code ~/.config/opencode/skills/
 ```
 
 **ويندوز (PowerShell)**
 ```powershell
-git clone https://github.com/<your-username>/clean-code-skill.git
+git clone https://github.com/omaromar9091/clean-code-skill.git
 New-Item -ItemType Directory -Force "$HOME\.config\opencode\skills"
 Copy-Item -Recurse clean-code-skill\clean-code "$HOME\.config\opencode\skills\"
 ```
