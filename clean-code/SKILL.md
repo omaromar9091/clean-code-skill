@@ -72,9 +72,9 @@ Go from lowest risk to highest. Finish and verify one level before starting the 
 
 ## Severity
 
-- 🔴 **High:** real bug risk or hard to change safely. Examples: silent failures, the same business rule in several places, UI, SQL, and business rules mixed in one function, hidden side effects.
-- 🟠 **Medium:** hurts readability and maintenance. Examples: function over about 40 lines or whose name needs "and", nesting deeper than 3, duplicated blocks, mixed naming styles.
-- 🟡 **Low:** polish. Examples: vague names, comments that repeat the code, magic numbers.
+- **High:** real bug risk or hard to change safely. Examples: silent failures, the same business rule in several places, UI, SQL, and business rules mixed in one function, hidden side effects.
+- **Medium:** hurts readability and maintenance. Examples: function over about 40 lines or whose name needs "and", nesting deeper than 3, duplicated blocks, mixed naming styles.
+- **Low:** polish. Examples: vague names, comments that repeat the code, magic numbers.
 
 Numbers here (40 lines, 3 levels, 4 parameters) are heuristics, not laws. Judge by readability.
 
@@ -100,8 +100,8 @@ Verified with: <tests / linter / manual / none>
 ### Findings
 | Sev | Rule | Location | Problem | Suggested fix |
 |-----|------|----------|---------|---------------|
-| 🔴 | Don't Repeat Logic | services.py:42, routes.py:88 | "Refundable" rule written twice, copies differ | One `is_refundable(order)`; confirm which copy is right |
-| 🟠 | Early Return | routes.py:15-60 | 5 levels of nesting | Guard clauses |
+| High | Don't Repeat Logic | services.py:42, routes.py:88 | "Refundable" rule written twice, copies differ | One `is_refundable(order)`; confirm which copy is right |
+| Medium | Early Return | routes.py:15-60 | 5 levels of nesting | Guard clauses |
 
 ### Behavior-changing suggestions (need approval)
 - <what changes, before vs after>
