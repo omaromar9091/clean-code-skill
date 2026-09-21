@@ -41,14 +41,14 @@ The skill is the `clean-code/` folder. Copy it into your agent's skills director
 
 **OpenCode, global (all projects)**
 ```bash
-git clone https://github.com/<your-username>/clean-code-skill.git
+git clone https://github.com/omaromar9091/clean-code-skill.git
 mkdir -p ~/.config/opencode/skills
 cp -r clean-code-skill/clean-code ~/.config/opencode/skills/
 ```
 
 **Windows (PowerShell)**
 ```powershell
-git clone https://github.com/<your-username>/clean-code-skill.git
+git clone https://github.com/omaromar9091/clean-code-skill.git
 New-Item -ItemType Directory -Force "$HOME\.config\opencode\skills"
 Copy-Item -Recurse clean-code-skill\clean-code "$HOME\.config\opencode\skills\"
 ```
